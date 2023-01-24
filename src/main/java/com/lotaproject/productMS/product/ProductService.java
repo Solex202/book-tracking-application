@@ -24,4 +24,8 @@ public class ProductService {
     public Product findProductById(Long id){
         return productRepository.findById(id).orElseThrow(()-> new ProductNotFoundException("Product with" + id + "not found"));
     }
+
+    public void delete(Long id){
+        productRepository.deleteById(id);
+    }
 }
