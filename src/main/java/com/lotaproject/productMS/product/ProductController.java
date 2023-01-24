@@ -3,10 +3,7 @@ package com.lotaproject.productMS.product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +28,24 @@ public class ProductController {
     public ResponseEntity<Product> getProductById(@PathVariable("id") Long id){
         Product product = productService.findProductById(id);
 
+        return new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<Product> addProduct(@RequestBody Product product){
+        Product newProduct = productService.addProduct(product);
+        return new ResponseEntity<>(product, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable("id") Long id, @RequestBody Product product){
+        Product updateProduct = productService.addProduct(product);
+        updateProduct.setName(product.getName());
+        updateProduct.setDescription(product.getDescription());
+        updateProduct.setPrice(updateProduct.getPrice());
+        updateProduct.setImageUrl(product.getImageUrl());
+
+        productService.addProduct(updateProduct);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 }
