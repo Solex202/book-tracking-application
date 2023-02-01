@@ -1,4 +1,4 @@
-package com.lotaproject.productMS.product;
+package com.lotaproject.bookTracking.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
