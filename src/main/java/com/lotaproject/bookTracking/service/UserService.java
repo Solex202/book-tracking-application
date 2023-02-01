@@ -1,31 +1,30 @@
-package com.lotaproject.bookTracking.product;
+package com.lotaproject.bookTracking.service;
 
-import org.springframework.stereotype.Service;
+import com.lotaproject.bookTracking.dto.RegisterUserDto;
 
-import java.util.List;
+public interface UserService {
+    void registerUser(RegisterUserDto dto);
 
-@Service
-public class ProductService {
+//    private final ProductRepository productRepository;
+//
+//    public UserService(ProductRepository productRepository) {
+//        this.productRepository = productRepository;
+//    }
+//
+//    public MyUser addProduct(MyUser product) {
+//        return productRepository.save(product);
+//    }
+//
+//    public List<MyUser> getProducts() {
+//        return productRepository.findAll();
+//    }
+//
+//    public MyUser findProductById(Long id){
+//        return productRepository.findById(id).orElseThrow(()-> new ProductNotFoundException("Product with" + id + "not found"));
+//    }
+//
+//    public void delete(Long id){
+//        productRepository.deleteById(id);
+//    }
 
-    private final ProductRepository productRepository;
-
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
-
-    public Product addProduct(Product product) {
-        return productRepository.save(product);
-    }
-
-    public List<Product> getProducts() {
-        return productRepository.findAll();
-    }
-
-    public Product findProductById(Long id){
-        return productRepository.findById(id).orElseThrow(()-> new ProductNotFoundException("Product with" + id + "not found"));
-    }
-
-    public void delete(Long id){
-        productRepository.deleteById(id);
-    }
 }

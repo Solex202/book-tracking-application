@@ -1,11 +1,8 @@
-package com.lotaproject.bookTracking.product;
+package com.lotaproject.bookTracking.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @ToString
 @Getter
@@ -14,14 +11,13 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@Table(name = "myUser")
 
-public class Product {
+
+public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String description;
-    private Double price;
-    private String imageUrl;
-
+    private String username;
+    private String password;
 }
