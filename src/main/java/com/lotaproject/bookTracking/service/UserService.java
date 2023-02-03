@@ -3,7 +3,7 @@ package com.lotaproject.bookTracking.service;
 import com.lotaproject.bookTracking.dto.RegisterUserDto;
 
 public interface UserService {
-    void registerUser(RegisterUserDto dto);
+    String registerUser(RegisterUserDto dto);
 
 //    private final ProductRepository productRepository;
 //

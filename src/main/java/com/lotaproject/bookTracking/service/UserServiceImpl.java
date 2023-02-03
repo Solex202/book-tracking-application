@@ -24,7 +24,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void registerUser(RegisterUserDto dto) {
+    public String registerUser(RegisterUserDto dto) {
+        log.info("GOT HERE ------->");
 
         MyUser myUser = new MyUser();
         myUser.setUsername(dto.getUsername());
@@ -34,6 +35,7 @@ public class UserServiceImpl implements UserService{
         myUser.setPassword(passwordEncoder);
 
         userRepository.save(myUser);
+        return "Registration successful";
 
     }
 }

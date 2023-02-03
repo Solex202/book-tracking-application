@@ -1,5 +1,6 @@
 package com.lotaproject.bookTracking.controller;
 
+import com.lotaproject.bookTracking.dto.RegisterUserDto;
 import com.lotaproject.bookTracking.model.MyUser;
 import com.lotaproject.bookTracking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +11,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:3000")
+public class RegisterController {
 
     private final UserService userService;
 
     @Autowired
-    public ProductController(UserService userService) {
+    public RegisterController(UserService userService) {
         this.userService = userService;
     }
 
+    @PostMapping("")
+    public ResponseEntity<?> registerUser(@RequestBody RegisterUserDto registerUserDto){
+       String response = userService.registerUser(registerUserDto);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 //    @GetMapping
 //    public ResponseEntity<List<MyUser>> getAllProducts(){
 //        List<MyUser> products = userService.getProducts();
