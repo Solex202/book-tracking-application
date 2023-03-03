@@ -1,9 +1,12 @@
 package com.lotaproject.bookTracking.service;
 
+import com.lotaproject.bookTracking.dto.LoginDto;
 import com.lotaproject.bookTracking.dto.RegisterUserDto;
 
 public interface UserService {
     String registerUser(RegisterUserDto dto);
+
+    String login(LoginDto dto);
 
 //    private final ProductRepository productRepository;
 //

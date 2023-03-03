@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@Table(name = "myUser")
+@Table(name = "my_user")
 
 
 public class MyUser {
@@ -20,4 +20,6 @@ public class MyUser {
     private Long id;
     private String username;
     private String password;
+
+    private Boolean loginStatus;
 }
