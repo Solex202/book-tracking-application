@@ -37,34 +37,5 @@ public class RegisterController {
         return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
-//    @GetMapping
-//    public ResponseEntity<List<MyUser>> getAllProducts(){
-//        List<MyUser> products = userService.getProducts();
-//        return new ResponseEntity<>(products, HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/find/{id}")
-//    public ResponseEntity<MyUser> getProductById(@PathVariable("id") Long id){
-//        MyUser product = userService.findProductById(id);
-//
-//        return new ResponseEntity<>(product, HttpStatus.OK);
-//    }
-//
-//    @PostMapping("/add")
-//    public ResponseEntity<MyUser> addProduct(@RequestBody MyUser product){
-//        MyUser newProduct = userService.addProduct(product);
-//        return new ResponseEntity<>(product, HttpStatus.CREATED);
-//    }
-//
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<MyUser> updateProduct(@PathVariable("id") Long id, @RequestBody MyUser product){
-//        MyUser updateProduct = userService.addProduct(product);
-//        updateProduct.setName(product.getName());
-//        updateProduct.setDescription(product.getDescription());
-//        updateProduct.setPrice(updateProduct.getPrice());
-//        updateProduct.setImageUrl(product.getImageUrl());
-//
-//        userService.addProduct(updateProduct);
-//        return new ResponseEntity<>(product, HttpStatus.OK);
-//    }
+
 }
