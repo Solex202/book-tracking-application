@@ -13,13 +13,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "my_user")
 
-
 public class MyUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String username;
     private String password;
+
+    private String role;
 
     private Boolean loginStatus;
 }

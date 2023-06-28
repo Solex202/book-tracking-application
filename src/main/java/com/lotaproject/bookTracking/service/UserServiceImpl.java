@@ -3,8 +3,10 @@ package com.lotaproject.bookTracking.service;
 import com.lotaproject.bookTracking.dto.LoginDto;
 import com.lotaproject.bookTracking.dto.RegisterUserDto;
 import com.lotaproject.bookTracking.exception.BookApplicationException;
+import com.lotaproject.bookTracking.model.AppRole;
 import com.lotaproject.bookTracking.model.MyUser;
 import com.lotaproject.bookTracking.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,52 +18,45 @@ import java.util.List;
 
 @Service
 @Slf4j
+@AllArgsConstructor
 public class UserServiceImpl implements UserService{
 
-    @Autowired
-    private UserRepository userRepository;
-
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    private final UserRepository userRepository;
 
     @Override
     public String registerUser(RegisterUserDto dto) {
-        log.info("GOT HERE ------->");
+        log.info("GOT INTO SERVICE ");
 
-        MyUser myUser = new MyUser();
+        var myUser = new MyUser();
         if(userRepository.existsByUsername(dto.getUsername())){
             throw new BookApplicationException("User already exists");
         }
+
         myUser.setUsername(dto.getUsername());
+        myUser.setRole(String.valueOf(AppRole.USER));
         myUser.setPassword(dto.getPassword());
         myUser.setLoginStatus(false);
 
-//        String passwordEncoder = passwordEncoder().encode(dto.getPassword());
-//        log.info("ENCODED PASSWORD -------------------> {} ", passwordEncoder);
-//        myUser.setPassword(passwordEncoder);
-
         userRepository.save(myUser);
+
+        log.info("ENCRYPTED PASSWORD {}",myUser.getPassword() );
         return "Registration successful";
   
     }
 
     @Override
     public String login(LoginDto dto) {
-        MyUser user = userRepository.findByUsername(dto.getUsername()).orElseThrow(()-> new BookApplicationException("User not found"));
+        var user = userRepository.findByUsername(dto.getUsername())
+                .orElseThrow(()-> new BookApplicationException("User not found"));
 
             if(! user.getPassword().matches(dto.getPassword())){
                 throw new BookApplicationException("Incorrect password");
             }
 
             user.setLoginStatus(true);
-
             userRepository.save(user);
 
             return "Login Successful";
     }
-
 
 }
